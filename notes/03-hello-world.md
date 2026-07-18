@@ -63,21 +63,28 @@ console.log("hello");   // works
 Now open a browser and go to its inspector console. There, `window` prints the window object,
 and `alert` works. So why the difference?
 
-When V8 was taken out of the browser and placed into C++, all the browser and window related
-parts were removed. So in Node you do not have the `window` object, `document`,
-`getElementById`, `navigator`, and similar browser APIs. Node keeps only the core
-functionality that you need on the server side.
+In Node you do not have the `window` object, `document`, `getElementById`, `navigator`, and
+similar browser APIs. Node keeps only the core functionality you need on the server side.
+
+> **Correction:** The video explains this as V8 having those browser parts "removed" when it
+> was taken out of the browser. That is the wrong mental model. `window`, `document`, `alert`,
+> and the rest are **Web APIs** that the browser adds on top of V8. They were never part of V8
+> or of JavaScript itself. V8 only provides the core JavaScript language. So nothing was
+> removed from V8. The browser supplies those APIs, and Node simply does not, because there is
+> no browser. Node instead supplies its own server-side APIs (like `fs` and `http`) on top of
+> the same V8 engine.
 
 ## Features removed and added
 
-Building Node.js was not just a copy of V8. Many browser features were removed because a server
-does not need them. At the same time, many server side features were added, for example:
+Node.js is not just V8 on its own. Browser-only APIs are simply absent, because Node is not a
+browser and never had them. On top of V8, Node adds the server-side APIs a program needs, for
+example:
 
 - Cryptography (encrypting data, hashing)
 - Working with packages
 - File handling
 
-So Node removed the browser-only parts and added the parts a server needs.
+So Node does not include the browser-only APIs, and it adds the parts a server needs.
 
 ## npm and package.json
 
