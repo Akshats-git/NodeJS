@@ -11,6 +11,7 @@ by Piyush Garg. One file per lecture.
 4. [Modules in NodeJS](04-modules.md) — modular programming, `require`, `module.exports` vs `exports`, built-in modules
 5. [File Handling](05-file-handling.md) — the `fs` module, read/write/append, sync vs async, copy/delete/mkdir
 6. [How NodeJS Works](06-how-nodejs-works.md) — V8 + libuv, main thread, thread pool, event loop phases, `UV_THREADPOOL_SIZE`
+7. [Building an HTTP Server](07-building-http-server.md) — the `http` module, `createServer`, req/res, ports, routing by `req.url`
 
 ## Roadmap
 
@@ -19,7 +20,6 @@ Topics still to cover, taken from a
 course, **not** from the playlist itself. These titles and their order are approximate and
 get confirmed against each video as notes are written.
 
-- Building HTTP Server
 - Handling URLs
 - HTTP Methods
 - Getting Started with ExpressJS
