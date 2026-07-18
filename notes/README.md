@@ -9,6 +9,7 @@ by Piyush Garg. One file per lecture.
 2. [Node.js Installation](02-installation.md) — nodejs.org, LTS vs Current, even/odd versioning, verifying node and npm
 3. [Hello World](03-hello-world.md) — first program, running .js files, no `window` in Node, `npm init` and package.json
 4. [Modules in NodeJS](04-modules.md) — modular programming, `require`, `module.exports` vs `exports`, built-in modules
+5. [File Handling](05-file-handling.md) — the `fs` module, read/write/append, sync vs async, copy/delete/mkdir
 
 ## Roadmap
 
@@ -17,7 +18,6 @@ Topics still to cover, taken from a
 course, **not** from the playlist itself. These titles and their order are approximate and
 get confirmed against each video as notes are written.
 
-- File Handling
 - How NodeJS Works
 - Building HTTP Server
 - Handling URLs
