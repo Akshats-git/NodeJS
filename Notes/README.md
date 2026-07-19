@@ -13,6 +13,7 @@ by Piyush Garg. One file per lecture.
 6. [How NodeJS Works](06-how-nodejs-works.md) — V8 + libuv, main thread, thread pool, event loop phases, `UV_THREADPOOL_SIZE`
 7. [Building an HTTP Server](07-building-http-server.md) — the `http` module, `createServer`, req/res, ports, routing by `req.url`
 8. [Handling URLs](08-handling-urls.md) — URL parts (protocol/domain/path/query), parsing `req.url`, built-in `url` vs deprecated `url.parse`
+9. [HTTP Methods](09-http-methods.md) — GET/POST/PUT/PATCH/DELETE, `req.method`, idempotency, routing by path + method
 
 ## Roadmap
 
@@ -21,7 +22,6 @@ Topics still to cover, taken from a
 course, **not** from the playlist itself. These titles and their order are approximate and
 get confirmed against each video as notes are written.
 
-- HTTP Methods
 - Getting Started with ExpressJS
 - How Versioning Works in NodeJS
 - What is REST API
