@@ -14,6 +14,7 @@ by Piyush Garg. One file per lecture.
 7. [Building an HTTP Server](07-building-http-server.md) — the `http` module, `createServer`, req/res, ports, routing by `req.url`
 8. [Handling URLs](08-handling-urls.md) — URL parts (protocol/domain/path/query), parsing `req.url`, built-in `url` vs deprecated `url.parse`
 9. [HTTP Methods](09-http-methods.md) — GET/POST/PUT/PATCH/DELETE, `req.method`, idempotency, routing by path + method
+10. [Getting Started with ExpressJS](10-express-getting-started.md) — why Express, `app.get/post`, `res.send`, `req.query`, `app.listen`
 
 ## Roadmap
 
@@ -22,7 +23,6 @@ Topics still to cover, taken from a
 course, **not** from the playlist itself. These titles and their order are approximate and
 get confirmed against each video as notes are written.
 
-- Getting Started with ExpressJS
 - How Versioning Works in NodeJS
 - What is REST API
 - Building REST APIs
