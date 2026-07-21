@@ -12,34 +12,29 @@ download buttons: **LTS** and **Current**. You need to know which one to pick.
 
 ## LTS vs Current
 
-Think of it like most apps. There is a stable production release everyone uses, and there is a
-beta release with new but unstable features.
+The two buttons are two different release lines, not stable versus broken. Both are production
+quality and pass the same tests. The difference is the support window and how new the features
+are.
 
 - **LTS** means Long Term Support. It gets a long support window (about 30 months of fixes and
   security updates). The site marks it "Recommended for most users". For most projects,
   download this one.
-- **Current** has the latest features. Use it if you want the newest additions or want to test
-  them early.
+- **Current** has the latest features and a much shorter support window. Newer features can
+  include breaking changes. Use it if you want the newest additions or want to test them early.
 
-> **Correction:** The video calls the Current release "a beta version" that is "unstable" and
-> should never be used in production. That is misleading. Current releases are production
-> quality and pass the same tests. The real differences are that Current has a much shorter
-> support window and receives newer features that can include breaking changes. It is not beta,
-> and it is not unstable. LTS is still the safer default for production mainly because of its
-> long, predictable support, not because Current is broken.
+LTS is the safer default for production mainly because of its long, predictable support, not
+because Current is unstable.
 
 ## The even and odd version rule
 
-Node.js version numbers follow a pattern:
+Node.js version numbers follow a pattern based on the **support track**, not on stability:
 
 - **Even numbers** (18, 20, ...) eventually move to the **LTS** track.
-- **Odd numbers** (19, 21, ...) never become LTS.
+- **Odd numbers** (19, 21, ...) reach end of life and never become LTS.
 
-> **Correction:** The video frames this as "even = stable, odd = unstable." The accurate rule
-> is about the **support track, not stability**. Every major version, even or odd, first ships
-> as **Current** for about six months. After that, even-numbered versions transition to LTS,
-> while odd-numbered versions reach end of life and are never promoted to LTS. Odd releases are
-> not unstable during their life; they just are not kept around long term.
+Every major version, even or odd, first ships as **Current** for about six months. After that,
+even-numbered versions transition to LTS, while odd-numbered versions are retired. Odd releases
+are not unstable during their life; they just are not kept around long term.
 
 Here is how it flows. A new major like 21 ships as Current. An even one like 20 spends its
 first months as Current, then becomes the active LTS. So for production you usually want the

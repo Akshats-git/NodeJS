@@ -33,13 +33,9 @@ V8 is the most popular engine. It powers Chrome and other Chromium browsers.
 
 ## How Node.js was made
 
-V8 is written in C++. Node.js takes this V8 engine and embeds it inside a C++ program, so the
-engine can run on its own without a browser.
-
-> **Correction:** The video says V8 was "taken out of Chrome." It is more accurate to say V8 is
-> a standalone, embeddable engine. It was built for Chrome but designed as an independent open
-> source library that any C++ program can embed. Node did not extract it from Chrome. It embeds
-> the same V8 library that Chrome also uses.
+V8 is written in C++. It is a standalone, embeddable engine: it was built for Chrome but
+designed as an independent open source library that any C++ program can embed. Node.js embeds
+this same V8 engine inside a C++ program, so the engine can run on its own without a browser.
 
 C++ is a native language. It can do machine level work like reading and writing files or
 looking at the storage on your computer. Because Node.js pairs V8 with C++, two things become

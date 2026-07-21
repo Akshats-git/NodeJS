@@ -16,6 +16,7 @@ by Piyush Garg. One file per lecture.
 9. [HTTP Methods](09-http-methods.md) — GET/POST/PUT/PATCH/DELETE, `req.method`, idempotency, routing by path + method
 10. [Getting Started with ExpressJS](10-express-getting-started.md) — why Express, `app.get/post`, `res.send`, `req.query`, `app.listen`
 11. [How Versioning Works](11-versioning.md) — SemVer (major/minor/patch), caret `^` vs tilde `~`, pinning, why not `latest`
+12. [What is a REST API](12-rest-api.md) — REST constraints, client-server, JSON vs HTML, respecting HTTP methods, statelessness, SSR vs CSR
 
 ## Roadmap
 
@@ -24,7 +25,6 @@ Topics still to cover, taken from a
 course, **not** from the playlist itself. These titles and their order are approximate and
 get confirmed against each video as notes are written.
 
-- What is REST API
 - Building REST APIs
 - Introduction to POSTMAN
 - Express Middleware

@@ -32,24 +32,19 @@ click login. Open that request and you will see `Request Method: POST`, with you
 
 ## PUT, PATCH, DELETE
 
-- **PUT** replaces or fully updates a resource.
-- **PATCH** updates part of an existing resource (just the changed fields), like changing your
-  name on an existing profile.
-- **DELETE** removes a resource, like deleting your account.
+- **PUT** replaces or fully updates a resource at a known address. It is idempotent (calling it
+  twice leaves the same result). It is not about file uploads; file uploads are normally done
+  with POST using `multipart/form-data`.
+- **PATCH** partially updates an existing resource (only the fields that changed), like changing
+  your name on an existing profile.
+- **DELETE** removes a resource, like deleting your account. It is idempotent.
 
-> **Correction:** The video describes PUT as "uploading a file or a photo." That is not
-> accurate. Here are the correct REST meanings:
-> - **POST** creates a **new** resource. The server usually assigns the new id. It is **not
->   idempotent** (calling it twice creates two records).
-> - **PUT** replaces or fully updates a resource at a known address. It is **idempotent**
->   (calling it twice leaves the same result). It is not specifically about file uploads.
->   File uploads are normally done with **POST** using `multipart/form-data`.
-> - **PATCH** partially updates a resource (only the fields that changed).
-> - **DELETE** removes a resource and is idempotent.
->
-> **Idempotency** matters: GET, PUT, and DELETE are idempotent, and GET is also "safe" (it
-> should not change anything on the server). POST and PATCH are not guaranteed idempotent. This
-> becomes important when we build REST APIs in later videos.
+For contrast, **POST** creates a new resource (the server usually assigns the new id) and is not
+idempotent, so calling it twice creates two records.
+
+**Idempotency** matters: GET, PUT, and DELETE are idempotent, and GET is also "safe" (it should
+not change anything on the server). POST and PATCH are not guaranteed idempotent. This becomes
+important when we build REST APIs in later videos.
 
 ## Most common: GET and POST
 
@@ -88,10 +83,10 @@ switch (myUrl.pathname) {
 
 So each path can support multiple methods, and each method does a different thing.
 
-> **Note:** "The browser always makes a GET" is true for typing a URL in the address bar or
-> clicking a link. A **form** submission can be GET or POST depending on the form's `method`
-> attribute. Plain HTML forms only support GET and POST. To send PUT, PATCH, or DELETE you use
-> JavaScript (`fetch` or `XHR`), or a tool like Postman.
+The browser makes a GET when you type a URL in the address bar or click a link. A form
+submission can be GET or POST depending on the form's `method` attribute. Plain HTML forms only
+support GET and POST. To send PUT, PATCH, or DELETE you use JavaScript (`fetch` or `XHR`), or a
+tool like Postman.
 
 ## Why this does not scale
 

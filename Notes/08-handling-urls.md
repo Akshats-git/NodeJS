@@ -77,7 +77,8 @@ You need to parse the URL to separate the path from the query.
 
 ## Parsing the URL
 
-The video installs an external package and uses `url.parse`:
+Node has a **built-in `url` module**, so you do not install anything to parse a URL. The legacy
+way uses `url.parse`:
 
 ```js
 const url = require("url");
@@ -92,21 +93,18 @@ console.log(myUrl);
 
 Then you switch on `myUrl.pathname` instead of `req.url`.
 
-> **Correction:** The video runs `npm i url` to install an external package. You do **not** need
-> to install anything. Node has a **built-in `url` module**, so `require("url")` works out of
-> the box. The npm `url` package is just a browser polyfill of this built-in and is redundant on
-> the server.
->
-> Also, `url.parse()` is the **legacy** API and is now deprecated. The modern, recommended way
-> is the **WHATWG `URL`** class with `URLSearchParams`. Since `req.url` is only a path (no
-> protocol or host), give `new URL` a base:
-> ```js
-> const myUrl = new URL(req.url, `http://${req.headers.host}`);
-> myUrl.pathname;                    // "/about"
-> myUrl.searchParams.get("myname");  // "Piyush"
-> ```
-> This is why, in the video, the parsed `protocol` and `host` come out as `null`: `req.url` is a
-> relative path on localhost, so it has no protocol or host of its own.
+`url.parse()` is the legacy API and is now deprecated. The modern, recommended way is the
+**WHATWG `URL`** class with `URLSearchParams`. Since `req.url` is only a path (no protocol or
+host), give `new URL` a base:
+
+```js
+const myUrl = new URL(req.url, `http://${req.headers.host}`);
+myUrl.pathname;                    // "/about"
+myUrl.searchParams.get("myname");  // "Piyush"
+```
+
+Because `req.url` is a relative path on localhost, it has no protocol or host of its own, so a
+parsed `protocol` and `host` come out as `null`.
 
 ## Putting it together
 

@@ -136,8 +136,8 @@ add as many properties as you want.
 ### Which one to use
 
 It depends on the use case. If you have a file where many functions run down the page, using
-`exports` is fine and is a good practice. The instructor personally prefers writing all the
-functions at the top and then exporting them together in `module.exports` at the end.
+`exports` is fine and is a good practice. A common preference is to write all the functions at
+the top and then export them together in a single `module.exports` at the end.
 
 ## Built-in modules
 

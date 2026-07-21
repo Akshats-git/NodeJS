@@ -10,12 +10,9 @@ event loop, its threads, and how it handles requests.
 Node.js is built from two main parts:
 
 1. **V8 engine** — the actual engine that executes your JavaScript. It is the same engine that
-   powers Chrome. It is written in C++.
-
-   > **Correction:** The video says V8 is made of "C++ and JavaScript." V8 is a C++ engine. It
-   > implements the core JavaScript language (ECMAScript), but the engine itself is C++. Some
-   > of V8's built-in functions are written in a special language called Torque and in
-   > CodeStubAssembler, not plain JavaScript.
+   powers Chrome. It is written in C++ and implements the core JavaScript language (ECMAScript).
+   Some of its built-in functions are written in a special language called Torque and in
+   CodeStubAssembler, but the engine itself is C++.
 2. **libuv** — a library that implements two things: the **event loop** and the **thread
    pool**. This is what lets your asynchronous code run and lets your whole program run
    efficiently on a single thread.
@@ -57,26 +54,20 @@ the single main thread. That work is offloaded to these threads so the main thre
 The offloaded work falls into two different groups:
 
 - **Blocking I/O with no async OS support.** Most **file system** operations and `dns.lookup`
-  go here. This work is I/O-bound (waiting on the disk), not heavy on the CPU.
+  go here. This work is I/O-bound (the CPU mostly waits on the disk), not heavy on the CPU. It
+  is handed to the thread pool because most operating systems do not offer a portable
+  non-blocking API for file I/O, so libuv uses threads to avoid blocking the main thread.
 - **Genuinely CPU-intensive work.** **Cryptography** (hashing, `pbkdf2`, `scrypt`) and
   **compression** (`zlib`) go here. These really do burn CPU.
 
-> **Correction:** The video calls file system operations "CPU-intensive." That is not accurate.
-> Reading and writing files is **I/O-bound**: the CPU mostly waits on the disk. File operations
-> are handed to the thread pool for a different reason, that most operating systems do not offer
-> a portable non-blocking API for file I/O, so libuv uses threads to avoid blocking the main
-> thread. Crypto and compression are the true CPU-intensive examples.
->
-> Also note: **network I/O** (TCP and HTTP sockets) does **not** use the thread pool. libuv
-> handles it with the operating system's own async mechanisms (epoll, kqueue, IOCP) directly on
-> the event loop. So an ordinary web server handling requests is not using the thread pool at
-> all.
+Note that **network I/O** (TCP and HTTP sockets) does **not** use the thread pool. libuv
+handles it with the operating system's own async mechanisms (epoll, kqueue, IOCP) directly on
+the event loop. So an ordinary web server handling requests is not using the thread pool at
+all.
 
-By default the thread pool has **4 threads**. Four threads means you can run four of these
-offloaded tasks in parallel. When such work starts, it is offloaded to these threads.
-
-> **Correction:** The video says the pool can go "up to 128." That was the old limit. Since
-> libuv 1.30.0 (2019), the maximum is **1024**. The default is still 4.
+By default the thread pool has **4 threads**, and the maximum is **1024** (since libuv 1.30.0).
+Four threads means you can run four of these offloaded tasks in parallel. When such work
+starts, it is offloaded to these threads.
 
 ## The event loop phases
 
@@ -250,9 +241,6 @@ environment, but now you understand the architecture behind how it runs JavaScri
 
 Promise callbacks were not covered in the phases above. So when does a resolved promise's
 callback run?
-
-The video says promise callbacks run only "between phase transitions." That is close but
-incomplete. Here is the fuller picture.
 
 Node has two special queues that are **not** phases: the **microtask queue** (promise `.then`
 callbacks, `await` continuations, `queueMicrotask`) and the **`process.nextTick`** queue. These

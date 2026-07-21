@@ -66,19 +66,15 @@ and `alert` works. So why the difference?
 In Node you do not have the `window` object, `document`, `getElementById`, `navigator`, and
 similar browser APIs. Node keeps only the core functionality you need on the server side.
 
-> **Correction:** The video explains this as V8 having those browser parts "removed" when it
-> was taken out of the browser. That is the wrong mental model. `window`, `document`, `alert`,
-> and the rest are **Web APIs** that the browser adds on top of V8. They were never part of V8
-> or of JavaScript itself. V8 only provides the core JavaScript language. So nothing was
-> removed from V8. The browser supplies those APIs, and Node simply does not, because there is
-> no browser. Node instead supplies its own server-side APIs (like `fs` and `http`) on top of
-> the same V8 engine.
+The reason is that `window`, `document`, `alert`, and the rest are **Web APIs** that the
+browser adds on top of V8. They were never part of V8 or of JavaScript itself. V8 only provides
+the core JavaScript language. The browser supplies those APIs, and Node simply does not,
+because there is no browser. Node instead supplies its own server-side APIs on top of the same
+V8 engine.
 
-## Features removed and added
+## Server-side APIs Node adds
 
-Node.js is not just V8 on its own. Browser-only APIs are simply absent, because Node is not a
-browser and never had them. On top of V8, Node adds the server-side APIs a program needs, for
-example:
+On top of V8, Node adds the server-side APIs a program needs, for example:
 
 - Cryptography (encrypting data, hashing)
 - Working with packages

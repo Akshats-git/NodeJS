@@ -17,12 +17,9 @@ A version like `4.18.2` has three parts. This scheme is called **Semantic Versio
 - **MINOR** (the `18`): new features, added in a backward-compatible way.
 - **PATCH** (the `2`): backward-compatible bug fixes.
 
-> **Correction:** The video uses non-standard names for these parts. It calls the last part
-> (PATCH) a "minor fix," and the middle part (MINOR) a "recommended / security fix." The
-> official SemVer names are **PATCH** (last), **MINOR** (middle), and **MAJOR** (first). Use
-> these standard names, because that is what every package's docs and changelog use. Also, a
-> **security fix is usually a PATCH** release, not a MINOR one. MINOR specifically means new,
-> backward-compatible **features**.
+These are the standard SemVer names, and they are what every package's docs and changelog use.
+Note that a security fix is usually a **PATCH** release; **MINOR** specifically means new,
+backward-compatible **features**.
 
 ### PATCH (last part)
 
@@ -45,8 +42,8 @@ API changed in an incompatible way.
 - If you have an **existing** project on version 4, upgrading to 5 may break it. Only upgrade
   after reading the migration guide and the changelog to see what breaking changes were made.
 
-Example given in the video: if Express 5 renamed `app.get` to `app.Get`, then all your v4 code
-using `app.get` would break on v5. That is why the major number is a warning.
+For example, if Express 5 renamed `app.get` to `app.Get`, then all your v4 code using `app.get`
+would break on v5. That is why the major number is a warning.
 
 ## Finding versions
 
@@ -96,10 +93,11 @@ auto-takes only patch.
 - **`latest`**: always grabs the newest version. **Never use this.** It can silently jump you
   to a new major and break your app.
 
-> **Note (the 0.x caveat):** The caret behaves differently when the major is `0`. `^0.11.0`
-> allows `>=0.11.0 <0.12.0`, not up to `1.0.0`. When the major is 0, the software is considered
-> unstable, so the caret locks the minor too. This matters for early-stage packages (like the
-> `url` package at `0.11.0` from an earlier video).
+### The 0.x caveat
+
+The caret behaves differently when the major is `0`. `^0.11.0` allows `>=0.11.0 <0.12.0`, not up
+to `1.0.0`. When the major is 0, the software is considered unstable, so the caret locks the
+minor too. This matters for early-stage packages (like the `url` package at `0.11.0`).
 
 ## The security / hacking angle
 

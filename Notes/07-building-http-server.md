@@ -81,9 +81,9 @@ Now open the browser at `http://localhost:8000`. You see `Hello from server`, an
 logs `New request received`. The flow: the browser sends a request, it reaches your server, the
 callback runs, it logs the message, and it sends the response back.
 
-> **Note:** If you change the server code, you must restart the server (`Ctrl + C` to stop, then
-> `npm start` again) for the change to take effect. Node does not auto-reload by default. A tool
-> like `nodemon` can do that, which comes in a later video.
+If you change the server code, restart the server (`Ctrl + C` to stop, then `npm start` again)
+for the change to take effect. Node does not auto-reload by default. A tool like `nodemon` can
+do that, which comes in a later video.
 
 ## Inspecting the request
 
@@ -97,9 +97,8 @@ console.log(req.headers);
 (`localhost:8000`) and the `user-agent` (which browser and OS the client uses). Logging the
 whole `req` object shows a very large object full of client information.
 
-> **Heads up:** You will often see two requests per page load. The browser sends an extra
-> request for the `favicon.ico` (the little tab icon). That is normal and nothing to worry
-> about.
+You will often see two requests per page load. The browser sends an extra request for the
+`favicon.ico` (the little tab icon). That is normal and nothing to worry about.
 
 ## Logging requests to a file
 
@@ -119,13 +118,11 @@ const myServer = http.createServer((req, res) => {
 myServer.listen(8000, () => console.log("Server started"));
 ```
 
-Use the **non-blocking** `fs.appendFile`, not `fs.appendFileSync`.
-
-> **Correction:** The video explains the reason as "if all the threads get busy, users have to
-> wait." That mixes things up. The real reason is that `appendFileSync` runs on the **single
-> main thread** and blocks the event loop. While it writes, your server cannot handle any other
-> request. The async `fs.appendFile` offloads the file work and keeps the main thread free to
-> serve other requests. So in a request handler, always prefer the non-blocking version.
+Use the **non-blocking** `fs.appendFile`, not `fs.appendFileSync`. The reason is that
+`appendFileSync` runs on the single main thread and blocks the event loop. While it writes, your
+server cannot handle any other request. The async `fs.appendFile` offloads the file work and
+keeps the main thread free to serve other requests. So in a request handler, always prefer the
+non-blocking version.
 
 Now `log.txt` fills with a line per request. You can log anything useful, like the timestamp,
 the requested URL, and the client IP address, which is handy for monitoring.
@@ -157,14 +154,13 @@ const myServer = http.createServer((req, res) => {
 - `/about` returns the about text.
 - Anything else falls to the default and returns `404 Not Found`.
 
-> **Correction:** At one point the video reads the path with `req.path`. The core `http` module
-> does **not** have `req.path`, so that would be `undefined`. Use **`req.url`** instead, which
-> holds the path (and any query string, for example `/about?ref=x`). `req.path` only exists on
-> Express's request object, which is a different thing covered later.
+Route on `req.url`, which holds the path and any query string (for example `/about?ref=x`). The
+core `http` module has no `req.path`; that property only exists on Express's request object,
+which is a different thing covered later.
 
-> **Note:** This example sends a `404` body but does not set the actual HTTP status code. To
-> truly return a 404, you would set `res.statusCode = 404` before `res.end(...)`. Status codes
-> get their own video later.
+This example sends a `404` body but does not set the actual HTTP status code. To truly return a
+404, you would set `res.statusCode = 404` before `res.end(...)`. Status codes get their own
+video later.
 
 ## Keep the handler non-blocking
 

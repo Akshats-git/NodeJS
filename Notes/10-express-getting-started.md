@@ -40,13 +40,10 @@ messy handler work so you can focus on your routes.
 npm install express
 ```
 
-The video uses Express **4.18.2**. That was the current version at the time.
-
-> **Note:** As of 2025, **Express 5** is the current major version, so a fresh
-> `npm install express` today installs 5.x, not 4.x. The basic routing in this course works the
-> same in Express 5, but Express 5 has some breaking changes under the hood. If you want to
-> follow the course exactly, install version 4 with `npm install express@4`. Otherwise the code
-> here still works on 5.
+**Express 5** is the current major version, so a fresh `npm install express` installs 5.x. The
+course uses Express 4.18.2. Basic routing works the same on both, but Express 5 has some
+breaking changes under the hood. To match the course exactly, install version 4 with
+`npm install express@4`; otherwise the code here still works on 5.
 
 ## Basic usage
 
