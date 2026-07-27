@@ -20,6 +20,7 @@ by Piyush Garg. One file per lecture.
 13. [Building REST APIs](13-building-rest-apis.md) — first project, mock data, `res.json`/`res.send`, path params (`:id`), `app.route`
 14. [Introduction to Postman](14-postman.md) — testing POST/PATCH/DELETE, `req.body`, body-parsing middleware, persisting with `fs`
 15. [Express Middleware](15-express-middleware.md) — `(req, res, next)`, `app.use`, chaining/order, modifying `req`, logging, middleware types
+16. [HTTP Headers](16-http-headers.md) — metadata on requests/responses, reading/setting headers, `Content-Type`, custom headers
 
 ## Roadmap
 
@@ -28,7 +29,6 @@ Topics still to cover, taken from a
 course, **not** from the playlist itself. These titles and their order are approximate and
 get confirmed against each video as notes are written.
 
-- What are HTTP Headers
 - HTTP Status Codes
 - Getting Started with MongoDB
 - Connecting NodeJS with MongoDB
