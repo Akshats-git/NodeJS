@@ -22,6 +22,7 @@ by Piyush Garg. One file per lecture.
 15. [Express Middleware](15-express-middleware.md) — `(req, res, next)`, `app.use`, chaining/order, modifying `req`, logging, middleware types
 16. [HTTP Headers](16-http-headers.md) — metadata on requests/responses, reading/setting headers, `Content-Type`, custom headers
 17. [HTTP Status Codes](17-http-status-codes.md) — 1xx–5xx categories, common codes, `res.status`, validation/404/500, nodemon
+18. [Getting Started with MongoDB](18-getting-started-mongodb.md) — NoSQL/documents/BSON, collections vs documents, install, `mongosh` commands
 
 ## Roadmap
 
@@ -30,7 +31,6 @@ Topics still to cover, taken from a
 course, **not** from the playlist itself. These titles and their order are approximate and
 get confirmed against each video as notes are written.
 
-- Getting Started with MongoDB
 - Connecting NodeJS with MongoDB
 - Model View Controller
 - Create a Custom URL Shortener
