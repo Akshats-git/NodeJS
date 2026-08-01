@@ -24,6 +24,7 @@ by Piyush Garg. One file per lecture.
 17. [HTTP Status Codes](17-http-status-codes.md) — 1xx–5xx categories, common codes, `res.status`, validation/404/500, nodemon
 18. [Getting Started with MongoDB](18-getting-started-mongodb.md) — NoSQL/documents/BSON, collections vs documents, install, `mongosh` commands
 19. [Connecting NodeJS with MongoDB](19-connecting-mongodb-mongoose.md) — Mongoose, schema → model → CRUD, `connect`, `timestamps`, `_id`
+20. [Model View Controller](20-mvc-pattern.md) — MVC refactor, models/controllers/routes folders, `express.Router()`, thin `index.js`
 
 ## Roadmap
 
@@ -32,7 +33,6 @@ Topics still to cover, taken from a
 course, **not** from the playlist itself. These titles and their order are approximate and
 get confirmed against each video as notes are written.
 
-- Model View Controller
 - Create a Custom URL Shortener
 - Server Side Rendering with EJS
 - Building Node.js Authentication
